@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from proyectocoder.view import saludo, segunda_vista # Para acceder a la vista hay que importar
+# from codigo.proyectocoder.view import miNombreEs
+from proyectocoder.view import saludo, segunda_vista, diaDeHoy, miNombreEs, probandoTemplate # Para acceder a la vista hay que importar
                                       # Al modulo y el metodo 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('saludo/', saludo), # ojo url no hace falta que se llame saludo/ el nombre es libre,
                              # pero la vista si debe llamarse por su nombre
-    path('segunda_vista/', segunda_vista),                         
+    path('segunda_vista/', segunda_vista),
+    path('diaDeHoy/', diaDeHoy),
+    path('miNombreEs/<nombre>', miNombreEs), 
+    path('probandoTemplate/', probandoTemplate)                        
 ]
