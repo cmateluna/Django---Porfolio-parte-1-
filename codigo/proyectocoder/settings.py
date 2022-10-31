@@ -55,7 +55,7 @@ ROOT_URLCONF = 'proyectocoder.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:/CoderHouse/Django-Porfolio(parte1)/Django---Porfolio-parte-1-/codigo/proyectocoder/plantillas/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

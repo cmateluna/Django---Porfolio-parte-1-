@@ -1,8 +1,7 @@
 from datetime import datetime
-from pipes import Template
 from xml.dom.minidom import Document
 from django.http import HttpResponse
-from django.template import Template, Context
+from django.template import Template, Context, loader
 
 def saludo(request):
     return HttpResponse("Hola Django - Coder")
@@ -24,17 +23,26 @@ def miNombreEs(self, nombre):
 
 def probandoTemplate(self):
 
-    miHtml= open("C:/CoderHouse/Django-Porfolio(parte1)/Django---Porfolio-parte-1-/codigo/proyectocoder/plantillas/template1.html")
+    nom = "Nicolas"
+    ap = "Perez"
 
-    plantilla = Template(miHtml.read())
+    listaDeNotas = [2,2,3,7,2,5]
 
-    miHtml.close()
+    diccionario = {"nombre":nom, "apellido":ap, "hoy":datetime.now(), "notas":listaDeNotas} # Para enviar el contexto
 
-    miContexto = Context()
+    # miHtml= open("C:/CoderHouse/Django-Porfolio(parte1)/Django---Porfolio-parte-1-/codigo/proyectocoder/plantillas/template1.html")
 
-    documento = plantilla.render(miContexto)
+    # plantilla = Template(miHtml.read()) # Se carga en memoria nuestro documento, template1.html
+    #                                     # importar template y contex, con: from django.template import Template, Context  
 
-    return HttpResponse(documento)
+    # miHtml.close() # Cerramos el archivo
 
+    # miContexto = Context(diccionario) # Le doy al contexto mi nombre y apellido
 
-        
+    # documento = plantilla.render(miContexto) # Aca renderizamos la plantilla en documento
+
+    plantilla = loader.get_template("template1.html")
+
+    documento = plantilla.render(diccionario) 
+
+    return HttpResponse(documento)      
